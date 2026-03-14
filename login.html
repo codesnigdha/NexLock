@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexLock Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <div class="logo">
+            <a href="index.html"><img src="assets/logo.png"></a>
+        </div>
+
+        <nav id="navbarLinks">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="signup.html" class="signup-btn">Signup</a>
+        </nav>
+
+    </header>
+
+    <!-- FORM SECTION -->
+    <div class="form">
+        <div class="container">
+
+            <h2>Login to NexLock</h2>
+
+            <input type="text" id="name" placeholder="Enter Name" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <input type="date" id="dob" required>
+
+            <div class="captcha-box">
+
+                <div class="captcha">
+                    <span id="captchaQuestion"></span>
+                </div>
+
+                <input type="number" id="captchaInput" placeholder="Answer">
+
+            </div>
+
+            <button onclick="login()">Login</button>
+
+            <div class="login-signup">
+                Don't have an account?
+                <a href="signup.html">Signup</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- BRAND -->
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="assets/logo.png" alt="NexLock Logo">
+                    </a>
+                </div>
+
+                <p>
+                    Secure password generation and analysis tools
+                    for better digital security.
+                </p>
+            </div>
+
+            <!-- PRODUCT -->
+            <div class="footer-section">
+                <h3>Product</h3>
+                <a href="#" onclick="goToGenerate()">Generate</a>
+                <a href="#" onclick="goToAnalyze()">Analyze</a>
+                <a href="#" onclick="goToDashboard()">Dashboard</a>
+            </div>
+
+            <!-- NAVIGATION -->
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="index.html">Home</a>
+                <a href="#" onclick="goToDashboard()">Dashboard</a>
+
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://instagram.com/" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+                    <a href="https://facebook.com/" target="_blank">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+
+                    <a href="https://youtube.com/" target="_blank">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
+                    <a href="https://twitter.com/" target="_blank">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM -->
+        <div class="footer-bottom">
+            <p>Copyright <span>&copy;</span> 2026 NexLock. Built for better password security.</p>
+        </div>
+
+    </footer>
+
+
+    <!-- DELETE ACCOUNT POPUP -->
+    <div id="messagePopup" class="auth-popup">
+        <div class="auth-popup-content">
+
+            <span>⚠️</span>
+            <h2>Delete Account</h2>
+            <p>Are you sure you want to delete your account?</p>
+
+            <div class="auth-buttons">
+                <button class="delete-btn" onclick="confirmClear()">
+                    Yes
+                </button>
+
+                <button class="close-btn" onclick="closeClearPopup()">
+                    No
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SCRIPT -->
+    <script src="js/auth-check.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

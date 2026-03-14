@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexLock - Analyze Password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <div class="logo">
+            <a href="index.html"><img src="assets/logo.png"></a>
+        </div>
+
+        <nav id="navbarLinks">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="signup.html" class="signup-btn">Signup</a>
+        </nav>
+
+    </header>
+
+
+    <!-- BACK NAVIGATION -->
+
+    <div class="back-nav">
+        <a href="generator.html">← Generator</a>
+        <a href="dashboard.html">Dashboard →</a>
+    </div>
+
+
+    <!-- ANALYZE SECTION -->
+
+    <div class="analyze-container">
+        <h1>Analyze Password</h1>
+        <div class="container-card">
+
+            <p class="analyze-subtitle">
+                Enter a password to check its strength and composition
+            </p>
+
+            <div class="analyze-input">
+                <label>Password</label>
+                <input type="text" id="passwordInput" placeholder="Enter password to analyze">
+                <button class="analyze-btn" onclick="analyzePassword()">
+                    Analyze Password
+                </button>
+            </div>
+
+
+            <!-- RESULT SECTION -->
+
+            <div id="resultSection" style="display:none">
+                <div class="result-card">
+                    <div class="result-header">
+
+                        <div>
+                            <p>Strength</p>
+                            <div id="strengthText" class="result-strength"></div>
+                        </div>
+
+                        <div>
+                            <p>Score</p>
+                            <div id="scoreText" class="result-score"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="progress-bar-bg">
+                        <div id="progressBar" class="progress-bar-fill"></div>
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD DISPLAY -->
+
+                <div class="password-display">
+                    <span id="displayPassword"></span>
+                    <button onclick="copyPassword(document.getElementById('displayPassword').innerText)">
+                        Copy
+                    </button>
+                </div>
+
+
+                <!-- COMPOSITION -->
+
+                <div class="composition">
+                    <h4>COMPOSITION</h4>
+                    <div class="comp-grid">
+
+                        <div class="comp-item" style="grid-column:1/3">
+                            <span>Length</span>
+                            <span id="lengthValue"></span>
+                        </div>
+
+                        <div class="comp-item">
+                            <span>Uppercase</span>
+                            <span id="uppercaseValue"></span>
+                        </div>
+
+                        <div class="comp-item">
+                            <span>Lowercase</span>
+                            <span id="lowercaseValue"></span>
+                        </div>
+
+                        <div class="comp-item">
+                            <span>Numbers</span>
+                            <span id="numberValue"></span>
+                        </div>
+
+                        <div class="comp-item">
+                            <span>Special Characters</span>
+                            <span id="symbolValue"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- COPY POPUP -->
+
+    <div id="copyPopup" class="copy-popup">
+        Password copied ✔
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- BRAND -->
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="assets/logo.png" alt="NexLock Logo">
+                    </a>
+                </div>
+
+                <p>
+                    Secure password generation and analysis tools
+                    for better digital security.
+                </p>
+            </div>
+
+            <!-- PRODUCT -->
+            <div class="footer-section">
+                <h3>Product</h3>
+                <a href="#" onclick="goToGenerate()">Generate</a>
+                <a href="#" onclick="goToAnalyze()">Analyze</a>
+                <a href="#" onclick="goToDashboard()">Dashboard</a>
+            </div>
+
+            <!-- NAVIGATION -->
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="index.html">Home</a>
+                <a href="#" onclick="goToDashboard()">Dashboard</a>
+
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://instagram.com/" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+                    <a href="https://facebook.com/" target="_blank">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+
+                    <a href="https://youtube.com/" target="_blank">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
+                    <a href="https://twitter.com/" target="_blank">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM -->
+        <div class="footer-bottom">
+            <p>Copyright <span>&copy;</span> 2026 NexLock. Built for better password security.</p>
+        </div>
+
+    </footer>
+
+
+    <!-- DELETE ACCOUNT POPUP -->
+    <div id="messagePopup" class="auth-popup">
+        <div class="auth-popup-content">
+
+            <span>⚠️</span>
+            <h2>Delete Account</h2>
+            <p>Are you sure you want to delete your account?</p>
+
+            <div class="auth-buttons">
+                <button class="delete-btn" onclick="confirmClear()">
+                    Yes
+                </button>
+
+                <button class="close-btn" onclick="closeClearPopup()">
+                    No
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SCRIPT -->
+    <script src="js/auth-check.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/analyzer.js"></script>
+
+</body>
+
+</html>

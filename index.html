@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexLock - Smart Password Security</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <div class="logo">
+            <a href="index.html"><img src="assets/logo.png"></a>
+        </div>
+
+        <nav id="navbarLinks">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="signup.html" class="signup-btn">Signup</a>
+        </nav>
+
+    </header>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <h1>Next Generation Password Security</h1>
+
+        <p>
+            NexLock helps you generate strong passwords, analyze password strength,
+            and build secure credentials using smart rule-based filters.
+        </p>
+
+        <div class="buttons">
+
+            <button class="btn primary" onclick="goToGenerate()">
+                Generate Password
+            </button>
+
+            <button class="btn secondary" onclick="goToAnalyze()">
+                Analyze Password
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="feature">
+
+        <h2 class="section-title">Powerful Security Features</h2>
+        <p class="section-subtitle">
+            Everything you need to create and analyze strong passwords
+        </p>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <a href="generator.html">
+                    <div class="feature-icon"><i class="fa-solid fa-user-lock"></i></div>
+                    <h3>Password Generator</h3>
+                    <p>
+                        Generate secure passwords based on your preferences including
+                        uppercase, lowercase, numbers, and special characters.
+                    </p>
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <a href="analyzer.html">
+                    <div class="feature-icon"><i class="fa-solid fa-chart-column"></i></div>
+                    <h3>Password Analyzer</h3>
+                    <p>
+                        Instantly analyze password strength and composition to ensure
+                        maximum security for your accounts.
+                    </p>
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <a href="dashboard.html">
+                    <div class="feature-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h3>Password History</h3>
+                    <p>
+                        View and manage previously generated and analyzed passwords
+                        inside your personal dashboard.
+                    </p>
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-shield"></i></div>
+                <h3>Fast & Secure</h3>
+                <p>
+                    All operations run locally in your browser ensuring speed,
+                    privacy, and security.
+                </p></a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WELCOME POPUP -->
+    <div id="welcomePopup" class="popup">
+        <div class="popup-box">
+            <h2 id="welcomeText"></h2>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- BRAND -->
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="assets/logo.png" alt="NexLock Logo">
+                    </a>
+                </div>
+
+                <p>
+                    Secure password generation and analysis tools
+                    for better digital security.
+                </p>
+            </div>
+
+            <!-- PRODUCT -->
+            <div class="footer-section">
+                <h3>Product</h3>
+                <a href="#" onclick="goToGenerate()">Generate</a>
+                <a href="#" onclick="goToAnalyze()">Analyze</a>
+                <a href="#" onclick="goToDashboard()">Dashboard</a>
+            </div>
+
+            <!-- NAVIGATION -->
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="index.html">Home</a>
+                <a href="#" onclick="goToDashboard()">Dashboard</a>
+
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://instagram.com/" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+                    <a href="https://facebook.com/" target="_blank">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+
+                    <a href="https://youtube.com/" target="_blank">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
+                    <a href="https://twitter.com/" target="_blank">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM -->
+        <div class="footer-bottom">
+            <p>Copyright <span>&copy;</span> 2026 NexLock. Built for better password security.</p>
+        </div>
+
+    </footer>
+
+
+    <!-- Auth-popup -->
+    <div id="authPopup" class="auth-popup">
+        <div class="auth-popup-content">
+
+            <span class="close" onclick="closeAuthPopup()">×</span>
+
+            <h2>Login Required 🔐</h2>
+            <p>Please login or signup to access this feature.</p>
+
+            <div class="auth-buttons">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="signup.html" class="signup-btn">Signup</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- DELETE ACCOUNT POPUP -->
+    <div id="messagePopup" class="auth-popup">
+        <div class="auth-popup-content">
+
+            <span>⚠️</span>
+            <h2>Delete Account</h2>
+            <p>Are you sure you want to delete your account?</p>
+
+            <div class="auth-buttons">
+                <button class="delete-btn" onclick="confirmClear()">
+                    Yes
+                </button>
+
+                <button class="close-btn" onclick="closeClearPopup()">
+                    No
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SCRIPT -->
+    <script src="js/auth-check.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

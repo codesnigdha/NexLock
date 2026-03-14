@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexLock Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <div class="logo">
+            <a href="index.html"><img src="assets/logo.png"></a>
+        </div>
+
+        <nav id="navbarLinks">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="signup.html" class="signup-btn">Signup</a>
+        </nav>
+
+    </header>
+
+
+    <!-- DASHBOARD HEADER -->
+
+    <div class="dashboard-header">
+
+        <div>
+            <h1>Dashboard</h1>
+            <p>Password history & analysis</p>
+        </div>
+
+        <button class="clear-btn" onclick="clearAll()">
+            Clear All
+        </button>
+
+    </div>
+
+
+    <!-- TABS -->
+
+    <div class="dashboard-tabs">
+
+        <button class="tab active" onclick="switchTab('generated', this)">
+            Generated Passwords
+        </button>
+
+        <button class="tab" onclick="switchTab('analyze', this)">
+            Analyze Passwords
+        </button>
+
+    </div>
+
+
+    <!-- GENERATED PASSWORD TAB -->
+
+    <div id="generated" class="tab-content active">
+
+        <div class="password-header">
+            <button class="password-new" onclick="window.location.href='generator.html'">
+                + Generate New Password
+            </button>
+        </div>
+
+        <div id="passwordHistory" class="password-grid">
+            <p class="empty-text">No passwords generated yet.</p>
+        </div>
+
+    </div>
+
+
+    <!-- ANALYZE PASSWORD TAB -->
+
+    <div id="analyze" class="tab-content">
+
+        <div class="password-header">
+            <button class="password-new" onclick="window.location.href='analyzer.html'">
+                + Analyze New Password
+            </button>
+        </div>
+
+        <div id="analyzeHistory" class="password-grid">
+            <p class="empty-text">No passwords analyzed yet.</p>
+        </div>
+
+    </div>
+
+
+    <!-- PASSWORD POPUP -->
+
+    <div id="passwordPopup" class="password-popup">
+        <div class="popup-box">
+
+            <h3>Generated Passwords</h3>
+            <div id="popupPasswords"></div>
+            <button class="close-popup" onclick="closePopup()">Close</button>
+
+        </div>
+    </div>
+
+    <!-- CLEAR ALL CONFIRM POPUP -->
+
+    <div id="clearPopup" class="auth-popup">
+        <div class="auth-popup-content">
+
+            <span>⚠️</span>
+            <h2>Delete All Data?</h2>
+            <p>
+                This will remove all generated and analyzed passwords.
+                This action cannot be undone.
+            </p>
+
+            <div class="auth-buttons">
+                <button class="delete-btn" onclick="confirmClear()">
+                    Delete
+                </button>
+
+                <button class="close-btn" onclick="closeClearPopup()">
+                    Cancel
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- COPY SUCCESS POPUP -->
+
+    <div id="copyPopup" class="copy-popup">
+        Password copied ✔
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- BRAND -->
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="assets/logo.png" alt="NexLock Logo">
+                    </a>
+                </div>
+
+                <p>
+                    Secure password generation and analysis tools
+                    for better digital security.
+                </p>
+            </div>
+
+            <!-- PRODUCT -->
+            <div class="footer-section">
+                <h3>Product</h3>
+                <a href="#" onclick="goToGenerate()">Generate</a>
+                <a href="#" onclick="goToAnalyze()">Analyze</a>
+                <a href="#" onclick="goToDashboard()">Dashboard</a>
+            </div>
+
+            <!-- NAVIGATION -->
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="index.html">Home</a>
+                <a href="#" onclick="goToDashboard()">Dashboard</a>
+
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://instagram.com/" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+                    <a href="https://facebook.com/" target="_blank">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+
+                    <a href="https://youtube.com/" target="_blank">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
+                    <a href="https://twitter.com/" target="_blank">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM -->
+        <div class="footer-bottom">
+            <p>Copyright <span>&copy;</span> 2026 NexLock. Built for better password security.</p>
+        </div>
+
+    </footer>
+
+
+    <!-- DELETE ACCOUNT POPUP -->
+    <div id="messagePopup" class="auth-popup">
+        <div class="auth-popup-content">
+
+            <span>⚠️</span>
+            <h2>Delete Account</h2>
+            <p>Are you sure you want to delete your account?</p>
+
+            <div class="auth-buttons">
+                <button class="delete-btn" onclick="confirmClear()">
+                    Yes
+                </button>
+
+                <button class="close-btn" onclick="closeClearPopup()">
+                    No
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SCRIPT -->
+    <script src="js/auth-check.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

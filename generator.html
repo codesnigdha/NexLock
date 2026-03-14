@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexLock - Password Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <div class="logo">
+            <a href="index.html"><img src="assets/logo.png"></a>
+        </div>
+
+        <nav id="navbarLinks">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="signup.html" class="signup-btn">Signup</a>
+        </nav>
+
+    </header>
+
+
+    <!-- BACK BUTTONS -->
+
+    <div class="back-nav">
+        <a href="analyzer.html">← Analyze</a>
+        <a href="dashboard.html">Dashboard →</a>
+    </div>
+
+
+    <!-- PASSWORD GENERATOR -->
+
+    <div class="generator-container">
+        <h1>Generate your password</h1>
+
+        <div class="container-card">
+            <p class="subtitle">Enter your details</p>
+
+            <label>First Name</label>
+            <input type="text" id="firstName" placeholder="Enter first name">
+            <label>Last Name</label>
+            <input type="text" id="lastName" placeholder="Enter last name">
+            <label>Date of Birth</label>
+            <input type="text" id="dob" placeholder="MMDDYYYY">
+
+
+            <hr>
+
+
+            <p class="subtitle">Character Range</p>
+            <div class="range-section">
+                <span id="minValue">8</span>
+                <input type="range" id="minRange" min="4" max="32" value="8">
+                <input type="range" id="maxRange" min="4" max="32" value="16">
+                <span id="maxValue">16</span>
+            </div>
+
+            <p class="range-label">
+                Min – Max character length (4 – 32)
+            </p>
+
+
+            <hr>
+
+
+            <p class="subtitle">Filter Rules</p>
+
+            <div class="filters">
+
+                <button class="filter" data-type="uppercase">
+                    Uppercase
+                </button>
+
+                <button class="filter" data-type="lowercase">
+                    Lowercase
+                </button>
+
+                <button class="filter" data-type="numbers">
+                    Numbers
+                </button>
+
+                <button class="filter" data-type="symbols">
+                    Special Characters
+                </button>
+
+            </div>
+
+
+            <hr>
+
+
+            <p class="subtitle">
+                Select special characters
+            </p>
+
+            <div class="specials">
+
+                <button class="symbol">!</button>
+                <button class="symbol">@</button>
+                <button class="symbol">#</button>
+                <button class="symbol">$</button>
+                <button class="symbol">%</button>
+                <button class="symbol">^</button>
+                <button class="symbol">&</button>
+                <button class="symbol">*</button>
+                <button class="symbol">-</button>
+                <button class="symbol">+</button>
+                <button class="symbol">=</button>
+
+            </div>
+        </div>
+
+
+        <button id="generateBtn" class="generate-btn" onclick="generatePassword()">
+            Generate Password
+        </button>
+
+        <div id="passwordResult" class="password-list"></div>
+
+        <button id="resetBtn" class="generate-btn" onclick="resetGenerator()" style="display:none;">
+            Reset
+        </button>
+
+    </div>
+
+    <!-- Copy msg -->
+    <div id="copyPopup" class="copy-popup">
+        Password copied ✔
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- BRAND -->
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="assets/logo.png" alt="NexLock Logo">
+                    </a>
+                </div>
+
+                <p>
+                    Secure password generation and analysis tools
+                    for better digital security.
+                </p>
+            </div>
+
+            <!-- PRODUCT -->
+            <div class="footer-section">
+                <h3>Product</h3>
+                <a href="#" onclick="goToGenerate()">Generate</a>
+                <a href="#" onclick="goToAnalyze()">Analyze</a>
+                <a href="#" onclick="goToDashboard()">Dashboard</a>
+            </div>
+
+            <!-- NAVIGATION -->
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="index.html">Home</a>
+                <a href="#" onclick="goToDashboard()">Dashboard</a>
+
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://instagram.com/" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+                    <a href="https://facebook.com/" target="_blank">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+
+                    <a href="https://youtube.com/" target="_blank">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
+                    <a href="https://twitter.com/" target="_blank">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM -->
+        <div class="footer-bottom">
+            <p>Copyright <span>&copy;</span> 2026 NexLock. Built for better password security.</p>
+        </div>
+
+    </footer>
+
+
+    <!-- DELETE ACCOUNT POPUP -->
+    <div id="messagePopup" class="auth-popup">
+        <div class="auth-popup-content">
+
+            <span>⚠️</span>
+            <h2>Delete Account</h2>
+            <p>Are you sure you want to delete your account?</p>
+
+            <div class="auth-buttons">
+                <button class="delete-btn" onclick="confirmClear()">
+                    Yes
+                </button>
+
+                <button class="close-btn" onclick="closeClearPopup()">
+                    No
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SCRIPT -->
+    <script src="js/auth-check.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/generator.js"></script>
+
+</body>
+
+</html>
