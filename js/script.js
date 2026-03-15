@@ -62,46 +62,80 @@ function login() {
   }
 }
 
+// ================= WELCOME POPUP =================
+
+const showWelcome = localStorage.getItem("showWelcome");
+const user = localStorage.getItem("loggedUser");
+
+if (showWelcome === "true" && user) {
+  const popup = document.getElementById("welcomePopup");
+  const text = document.getElementById("welcomeText");
+
+  if (popup && text) {
+    text.textContent = "Welcome, " + user + " 🎉";
+
+    popup.style.display = "flex";
+
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 2000);
+
+    localStorage.removeItem("showWelcome");
+  }
+}
+
 // ================= NAVBAR + POPUP =================
+
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("show");
+}
 
 window.onload = function () {
   let user = localStorage.getItem("loggedUser");
-  let navbar = document.getElementById("navbarLinks");
+  let navLinks = document.getElementById("navbarLinks");
+  let sidebarLinks = document.getElementById("sidebarContent");
 
-  if (user && navbar) {
-    navbar.innerHTML = `
-        <a href="index.html">Home</a>
-        <a href="#" onclick="goToGenerate()">Generate</a>
-        <a href="#" onclick="goToAnalyze()">Analyze</a>
-  
-        <div class="profile-menu">
-          <button onclick="toggleProfile()">Profile ▾</button>
-  
-          <div id="profileDropdown" class="profile-dropdown">
-            <a href="#" onclick="goToDashboard()">Dashboard</a>
-            <a href="#" onclick="logout()">Logout</a>
-            <a href="#" onclick="deleteAccount()" class="delete">Delete Account</a>
-          </div>
-        </div>
-      `;
+  // Define content for both views
+  let menuHtml = user
+    ? `
+    <a href="index.html">Home</a>
+    <a href="#" onclick="goToGenerate()">Generate</a>
+    <a href="#" onclick="goToAnalyze()">Analyze</a>
+    <a href="#" onclick="goToDashboard()">Dashboard</a>
+    <a href="#" onclick="logout()">Logout</a>
+    <a href="#" onclick="deleteAccount()" style="color: #ef4444;">Delete Account</a>
+`
+    : `
+    <a href="login.html">Login</a>
+    <a href="signup.html">Signup</a>
+`;
+
+  // Make sure you inject it into the sidebar
+  document.getElementById("sidebarContent").innerHTML = menuHtml;
+
+  // Populate Desktop (Profile menu remains separate)
+  if (user) {
+    navLinks.innerHTML = `
+          <a href="index.html">Home</a>
+          <a href="#" onclick="goToGenerate()">Generate</a>
+          <a href="#" onclick="goToAnalyze()">Analyze</a>
+          <div class="profile-menu">
+              <button onclick="toggleProfile()">Profile ▾</button>
+              <div id="profileDropdown" class="profile-dropdown">
+                  <a href="#" onclick="goToDashboard()">Dashboard</a>
+                  <a href="#" onclick="logout()">Logout</a>
+                  <a href="#" onclick="deleteAccount()" class="delete">Delete Account</a>
+              </div>
+          </div>`;
+  } else {
+    navLinks.innerHTML = `<a href="login.html">Login</a><a href="signup.html">Signup</a>`;
   }
 
-  if (user && localStorage.getItem("showWelcome")) {
-    let popup = document.getElementById("welcomePopup");
-    let text = document.getElementById("welcomeText");
+  // Populate Sidebar
+  sidebarLinks.innerHTML = menuHtml;
 
-    if (popup && text) {
-      text.innerText = "Welcome " + user + " to NexLock 🔐";
-
-      popup.style.display = "flex";
-
-      setTimeout(() => {
-        popup.style.display = "none";
-      }, 2000);
-
-      localStorage.removeItem("showWelcome");
-    }
-  }
+  // ... (keep your existing welcome popup code below) ...
 };
 
 // ================= PROFILE MENU =================
@@ -116,24 +150,26 @@ function toggleProfile() {
 
 function deleteAccount() {
   const popup = document.getElementById("messagePopup");
-  if (popup) popup.style.display = "flex";
+  if (popup) {
+    popup.style.display = "flex";
+  }
 }
 
-// ================= CONFIRM DELETE =================
-
+// YES BUTTON
 function confirmClear() {
+  // remove user data
   localStorage.removeItem("nexlockUser");
   localStorage.removeItem("loggedUser");
 
-  closeClearPopup();
+  // close popup
+  const popup = document.getElementById("messagePopup");
+  if (popup) popup.style.display = "none";
 
-  alert("Account deleted");
-
-  window.location.href = "signup.html";
+  // redirect to signup
+  window.location.replace("signup.html");
 }
 
-// ================= CLOSE DELETE POPUP =================
-
+// NO BUTTON
 function closeClearPopup() {
   const popup = document.getElementById("messagePopup");
   if (popup) popup.style.display = "none";

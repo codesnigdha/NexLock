@@ -35,8 +35,10 @@ h1 {
 
 h2 {
   letter-spacing: 2px;
+  font-size: 28px;
   font-family: "Luckiest Guy", cursive;
 }
+
 a {
   font-size: 16px;
   text-decoration: none;
@@ -86,7 +88,6 @@ header {
 .welcome {
   color: #3b82f6;
   font-weight: bold;
-  margin-right: 15px;
 }
 
 nav a {
@@ -173,7 +174,7 @@ nav a:hover {
 
 /* ================= AUTH PAGES ================= */
 .form {
-  margin: auto;
+  margin: 40px auto;
   padding: 160px;
 }
 
@@ -335,7 +336,7 @@ nav a:hover {
   border-radius: 8px;
   transition: 0.3s;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .primary {
@@ -358,8 +359,9 @@ nav a:hover {
 /* ================= feature ================= */
 
 .feature {
-  padding: 120px 10%;
+  padding: 120px 5%;
   text-align: center;
+  margin-bottom: 100px;
 }
 
 .section-title {
@@ -373,7 +375,7 @@ nav a:hover {
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 30px;
 }
 
@@ -386,6 +388,9 @@ nav a:hover {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.feature-card p {
+  margin-bottom: 10px;
+}
 .feature-card:hover {
   transform: translateY(-8px);
   border-color: #3b82f6;
@@ -414,12 +419,12 @@ nav a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: none;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(5px);
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(2px);
   z-index: 1000;
 }
 
@@ -450,6 +455,19 @@ nav a:hover {
     opacity: 0;
     transform: translateY(-10px) scale(0.95);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ANIMATION */
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
 
   to {
     opacity: 1;
@@ -470,18 +488,14 @@ nav a:hover {
 
 .footer-container {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 60px;
-}
-
-.footer-brand {
-  padding-left: 20px;
+  padding: 0px 20px;
 }
 
 .footer-logo img {
   height: 70px;
   width: auto;
-  padding-left: 20px;
 }
 
 .footer-brand p {
@@ -489,6 +503,12 @@ nav a:hover {
   line-height: 1.5;
   max-width: 100%;
   font-size: 16px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
 }
 
 .footer-section {
@@ -587,6 +607,7 @@ nav a:hover {
   margin-bottom: 20px;
   font-size: 16px;
 }
+
 .auth-buttons {
   display: flex;
   justify-content: center;
@@ -807,9 +828,8 @@ hr {
   margin-top: 20px;
   padding: 12px;
   background: #020617;
-  border: 1px solid #334155;
   border-radius: 8px;
-  font-size: 18px;
+  border: 1px solid #334155;
   text-align: center;
 }
 
@@ -960,13 +980,6 @@ hr {
 }
 
 .password-display button {
-  background: #1e293b;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 12px;
-  border: none;
   width: 100px;
 }
 
@@ -1023,6 +1036,7 @@ hr {
 .dashboard-header p {
   font-size: 15px;
   color: #94a3b8;
+  white-space: nowrap;
 }
 
 .clear-btn {
@@ -1413,4 +1427,999 @@ hr {
 .copy-popup.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* =============== RESPONSIVE =================== */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 200px;
+  border-radius: 20px;
+  background: #0f172a;
+  transition: 0.3s ease-in-out;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+}
+
+.sidebar.show {
+  right: 0;
+}
+
+.sidebar a,
+.sidebar button {
+  display: block;
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 10px 0;
+}
+
+.cross {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+}
+
+#sidebarContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+  }
+  nav#navbarLinks {
+    display: none;
+  }
+}
+
+/* ====================================================== RESPONSIVE ====================================================== */
+/* Tablet */
+@media (max-width: 992px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  a {
+    font-size: 16px;
+  }
+
+  .logo img {
+    height: 55px;
+  }
+
+  .form {
+    margin: 150px auto;
+    padding: 30px;
+  }
+
+  .container {
+    width: 500px;
+    padding: 30px;
+    gap: 20px;
+  }
+
+  .container h2 {
+    margin-bottom: 0px;
+  }
+
+  .container input {
+    font-size: 16px;
+  }
+
+  .captcha {
+    font-size: 16px;
+  }
+
+  #captchaInput {
+    font-size: 16px;
+  }
+
+  .container button {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .login-signup {
+    font-size: 16px;
+  }
+
+  .hero {
+    padding: 40px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .feature {
+    padding: 100px 5%;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .feature-card p {
+    margin-bottom: 10px;
+    padding: 0 10px;
+  }
+
+  .footer {
+    padding: 50px 30px 0 30px;
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .footer-brand {
+    padding-left: 0;
+    padding-bottom: 25px;
+  }
+
+  .footer-logo img {
+    height: 55px;
+    width: auto;
+  }
+
+  .footer-brand p {
+    line-height: 1.3;
+    font-size: 18px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+
+  .footer-section {
+    margin-bottom: 30px;
+    text-align: left;
+    padding-left: 25px;
+  }
+
+  .footer-section h3 {
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+
+  .footer-section a {
+    font-size: 16px;
+  }
+
+  .social-icons {
+    gap: 12px;
+    margin-top: 5px;
+  }
+
+  .social-icons a {
+    font-size: 18px;
+  }
+
+  .footer-bottom {
+    margin-top: 10px;
+    padding-top: 15px;
+    font-size: 16px;
+  }
+
+  .footer-bottom p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .footer-bottom span {
+    font-size: 16px;
+  }
+}
+
+/* Large mobile */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  a {
+    font-size: 14px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .cross {
+    font-size: 20px;
+  }
+
+  .sidebar {
+    padding: 70px 15px;
+    width: 200px;
+  }
+
+  #sidebarContent {
+    gap: 10px;
+  }
+
+  .sidebar a {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .logo img {
+    height: 45px;
+  }
+
+  .form {
+    margin: 120px auto;
+    padding: 15px;
+  }
+
+  .container {
+    width: 350px;
+    padding: 25px;
+    gap: 15px;
+  }
+
+  .container h2 {
+    margin-bottom: 10px;
+  }
+
+  .container input {
+    font-size: 14px;
+  }
+
+  .captcha {
+    font-size: 14px;
+  }
+
+  #captchaInput {
+    font-size: 14px;
+  }
+
+  .container button {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .login-signup {
+    font-size: 14px;
+  }
+
+  .auth-popup-content {
+    padding: 20px;
+  }
+
+  .auth-popup-content span {
+    font-size: 20px;
+  }
+
+  .auth-popup-content h2 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  .auth-popup-content p {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .auth-buttons {
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .login-btn {
+    width: 60px;
+  }
+
+  .signup-btn {
+    width: 60px;
+  }
+
+  .hero {
+    padding: 60px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    margin-bottom: 0px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .buttons {
+    gap: 20px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .feature {
+    padding: 100px 5%;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .feature-card p {
+    font-size: 14px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    padding-bottom: 0px;
+  }
+
+  .range-label {
+    font-size: 14px;
+  }
+
+  .specials {
+    gap: 10px;
+  }
+
+  .specials button {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .generate-btn,
+  .analyze-btn {
+    font-size: 14px;
+  }
+
+  .password-grid {
+    margin: 10px auto 30px;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .password-item span {
+    font-size: 14px;
+  }
+
+  .password-item button {
+    font-size: 12px;
+  }
+
+  .analyze-container {
+    width: 70%;
+    padding: 20px;
+    padding-bottom: 200px;
+  }
+
+  .result-card {
+    margin-top: 10px;
+    padding: 15px;
+  }
+
+  .result-score {
+    font-size: 20px;
+  }
+
+  .password-display span {
+    font-size: 14px;
+  }
+
+  .password-display button {
+    font-size: 14px;
+    width: 80px;
+  }
+
+  .composition {
+    padding: 15px;
+  }
+
+  .comp-grid {
+    display: block;
+    font-size: 12px;
+  }
+
+  .comp-item {
+    margin-bottom: 20px;
+  }
+
+  .dashboard-header p {
+    font-size: 14px;
+  }
+
+  .tab {
+    font-size: 14px;
+  }
+
+  .empty-text {
+    font-size: 12px;
+  }
+
+  .password-new {
+    font-size: 12px;
+  }
+
+  .history-card {
+    padding: 18px;
+  }
+
+  .card-top {
+    margin-bottom: 0px;
+  }
+
+  .card-top h3 {
+    font-size: 16px;
+  }
+
+  .view-btn,
+  .close-btn,
+  .delete-btn {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .dob {
+    font-size: 12px;
+    margin-bottom: 0px;
+  }
+
+  .date {
+    font-size: 10px;
+  }
+
+  .popup-box {
+    padding: 20px;
+  }
+
+  .analyze-card {
+    padding: 20px;
+  }
+
+  .analyze-password {
+    font-size: 16px;
+  }
+
+  .analyze-strength {
+    font-size: 14px;
+  }
+
+  .analyze-date {
+    font-size: 10px;
+  }
+
+  .analyze-tags {
+    margin-top: 10px;
+  }
+
+  .tag {
+    font-size: 10px;
+  }
+
+  .copy-popup {
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+
+  .footer {
+    padding: 30px 20px 0 20px;
+  }
+
+  .footer-container {
+    display: contents;
+    text-align: center;
+  }
+
+  .footer-brand {
+    padding-left: 0;
+    padding-bottom: 25px;
+  }
+
+  .footer-logo img {
+    height: 50px;
+    width: auto;
+  }
+
+  .footer-brand p {
+    line-height: 1.3;
+    font-size: 16px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 0 20%;
+  }
+
+  .footer-section {
+    margin-bottom: 30px;
+    padding-left: 40px;
+  }
+
+  .footer-section h3 {
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+  .footer-section a {
+    font-size: 14px;
+  }
+
+  .social-icons {
+    gap: 12px;
+    margin-top: 5px;
+  }
+
+  .social-icons a {
+    font-size: 16px;
+  }
+
+  .footer-bottom {
+    margin-top: 10px;
+    padding-top: 15px;
+    font-size: 14px;
+  }
+
+  .footer-bottom p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .footer-bottom span {
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 18px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  a {
+    font-size: 12px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .cross {
+    font-size: 14px;
+  }
+
+  .sidebar {
+    padding: 60px 10px;
+    width: 150px;
+  }
+
+  #sidebarContent {
+    gap: 5px;
+  }
+
+  .sidebar a {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .form {
+    margin: 150px auto;
+    padding: 10px;
+  }
+
+  .container {
+    width: 300px;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .container h2 {
+    margin-bottom: 5px;
+  }
+
+  .container input {
+    font-size: 12px;
+  }
+
+  .captcha {
+    font-size: 12px;
+  }
+
+  #captchaInput {
+    font-size: 12px;
+  }
+
+  .container button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .login-signup {
+    font-size: 12px;
+  }
+
+  .hero {
+    height: 90vh;
+    padding: 40px;
+  }
+
+  .hero h1 {
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+
+  .hero p {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .buttons {
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 5px;
+    width: 150px;
+    font-size: 12px;
+  }
+
+  .feature {
+    padding: 80px 5%;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .feature p {
+    font-size: 12px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .feature-card {
+    padding: 10px;
+  }
+
+  .feature-icon {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .feature-card h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .feature-card p {
+    font-size: 12px;
+  }
+
+  .container-card {
+    padding: 20px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+  }
+
+  .container-card label {
+    font-size: 12px;
+  }
+
+  .generator-container input[type="text"] {
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+
+  hr {
+    margin: 20px 0;
+  }
+
+  .range-label {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .filters {
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+
+  .filter {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .specials button {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+    margin-bottom: 0px;
+  }
+
+  .generate-btn,
+  .analyze-btn {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  .password-item {
+    padding: 8px 10px;
+  }
+
+  .password-item span {
+    font-size: 12px;
+  }
+
+  .password-item button {
+    font-size: 10px;
+  }
+
+  .analyze-container {
+    width: 80%;
+    padding: 10px;
+    padding-bottom: 100px;
+  }
+
+  .result-card {
+    padding: 10px;
+  }
+
+  .result-score {
+    font-size: 18px;
+  }
+
+  .result-header p {
+    font-size: 12px;
+  }
+
+  .password-display,
+  .composition {
+    margin-top: 10px;
+  }
+
+  .password-display span {
+    font-size: 12px;
+  }
+
+  .password-display button {
+    font-size: 12px;
+    width: 60px;
+  }
+
+  .composition {
+    padding: 10px;
+  }
+
+  .comp-grid {
+    display: block;
+    font-size: 10px;
+  }
+
+  .comp-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .dashboard-header h1 {
+    text-align: left;
+    margin-bottom: 0px;
+  }
+
+  .dashboard-header p {
+    font-size: 12px;
+  }
+
+  .clear-btn {
+    font-size: 12px;
+  }
+
+  .dashboard-tabs {
+    margin-top: 10px;
+  }
+
+  .tab {
+    font-size: 12px;
+  }
+
+  .tab-content {
+    margin-top: 0;
+  }
+
+  .password-header {
+    width: 80%;
+  }
+
+  .password-new {
+    margin-bottom: 0px;
+  }
+
+  .password-grid {
+    margin: 30px auto;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .password-new {
+    font-size: 12px;
+  }
+
+  .history-card {
+    padding: 15px;
+  }
+
+  .card-top h3 {
+    font-size: 14px;
+  }
+
+  .pwd-count {
+    font-size: 12px;
+  }
+
+  .date {
+    font-size: 10px;
+  }
+
+  .analyze-card {
+    padding: 20px;
+  }
+
+  .footer {
+    padding: 20px 10px 0 10px;
+  }
+
+  .footer-container {
+    display: contents;
+    text-align: center;
+  }
+
+  .footer-brand {
+    padding-left: 0px;
+    padding-bottom: 20px;
+  }
+
+  .footer-logo img {
+    height: 40px;
+    width: auto;
+    padding-left: 0px;
+  }
+
+  .footer-brand p {
+    line-height: 1;
+    font-size: 12px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .footer-section {
+    margin-bottom: 30px;
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  .footer-section h3 {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .footer-section a {
+    font-size: 12px;
+  }
+
+  .social-icons {
+    gap: 10px;
+    margin-top: 0px;
+  }
+
+  .social-icons a {
+    font-size: 14px;
+  }
+
+  .footer-bottom {
+    margin-top: 0px;
+    padding-top: 10px;
+    font-size: 12px;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .footer-bottom span {
+    font-size: 12px;
+  }
 }
