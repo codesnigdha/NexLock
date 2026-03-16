@@ -9,6 +9,11 @@
   font-family: "Nova Round", system-ui;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   background: linear-gradient(rgba(2, 6, 23, 0.9), rgba(0, 0, 0, 0.95)),
     url("../assets/bg.jpg");
@@ -484,6 +489,7 @@ nav a:hover {
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   border-top: 1px solid #1e293b;
+  margin-top: auto;
 }
 
 .footer-container {
