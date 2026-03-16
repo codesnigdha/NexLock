@@ -1736,7 +1736,6 @@ hr {
 
   .container button {
     font-size: 16px;
-    padding: 10px;
   }
 
   .login-signup {
@@ -1766,12 +1765,9 @@ hr {
     margin-top: 10px;
   }
 
-  .login-btn {
-    width: 60px;
-  }
-
+  .login-btn,
   .signup-btn {
-    width: 60px;
+    width: 80px;
   }
 
   .hero {
@@ -1797,20 +1793,8 @@ hr {
     font-size: 14px;
   }
 
-  .feature {
-    padding: 100px 5%;
-  }
-
   .section-title {
     font-size: 28px;
-  }
-
-  .feature-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .feature-card {
-    padding: 20px;
   }
 
   .feature-card p {
@@ -1890,6 +1874,10 @@ hr {
 
   .comp-item {
     margin-bottom: 20px;
+  }
+
+  .dashboard-header h1 {
+    text-align: left;
   }
 
   .dashboard-header p {
@@ -1980,34 +1968,24 @@ hr {
     text-align: center;
   }
 
-  .footer-brand {
-    padding-left: 0;
-    padding-bottom: 25px;
-  }
-
   .footer-logo img {
     height: 50px;
-    width: auto;
   }
 
   .footer-brand p {
-    line-height: 1.3;
     font-size: 16px;
   }
 
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
     gap: 40px;
     margin: 0 20%;
   }
 
   .footer-section {
-    margin-bottom: 30px;
     padding-left: 40px;
   }
 
   .footer-section h3 {
-    margin-bottom: 12px;
     font-size: 16px;
   }
 
@@ -2015,24 +1993,16 @@ hr {
     font-size: 14px;
   }
 
-  .social-icons {
-    gap: 12px;
-    margin-top: 5px;
-  }
-
   .social-icons a {
     font-size: 16px;
   }
 
   .footer-bottom {
-    margin-top: 10px;
-    padding-top: 15px;
     font-size: 14px;
   }
 
   .footer-bottom p {
     font-size: 14px;
-    margin-bottom: 10px;
   }
 
   .footer-bottom span {
@@ -2056,10 +2026,6 @@ hr {
 
   a {
     font-size: 12px;
-  }
-
-  .hamburger {
-    display: block;
   }
 
   .cross {
@@ -2120,6 +2086,18 @@ hr {
     font-size: 12px;
   }
 
+  .auth-popup-content {
+    padding: 10px;
+  }
+
+  .auth-popup-content span {
+    font-size: 14px;
+  }
+
+  .auth-popup-content p {
+    font-size: 12px;
+  }
+
   .hero {
     height: 90vh;
     padding: 40px;
@@ -2127,12 +2105,10 @@ hr {
 
   .hero h1 {
     font-size: 18px;
-    margin-bottom: 0px;
   }
 
   .hero p {
     font-size: 12px;
-    margin-bottom: 15px;
   }
 
   .buttons {
@@ -2186,7 +2162,6 @@ hr {
 
   .subtitle {
     font-size: 14px;
-    padding-bottom: 0px;
     margin-bottom: 10px;
   }
 
@@ -2280,7 +2255,6 @@ hr {
   }
 
   .comp-grid {
-    display: block;
     font-size: 10px;
   }
 
@@ -2291,7 +2265,6 @@ hr {
   }
 
   .dashboard-header h1 {
-    text-align: left;
     margin-bottom: 0px;
   }
 
@@ -2320,6 +2293,7 @@ hr {
   }
 
   .password-new {
+    font-size: 12px;
     margin-bottom: 0px;
   }
 
@@ -2327,10 +2301,6 @@ hr {
     margin: 30px auto;
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .password-new {
-    font-size: 12px;
   }
 
   .history-card {
@@ -2349,17 +2319,8 @@ hr {
     font-size: 10px;
   }
 
-  .analyze-card {
-    padding: 20px;
-  }
-
   .footer {
     padding: 20px 10px 0 10px;
-  }
-
-  .footer-container {
-    display: contents;
-    text-align: center;
   }
 
   .footer-brand {
