@@ -82,6 +82,7 @@ If the user is **not logged in**, they cannot access:
 ---
 
 📁 Project Structure
+```
 NexLock
 │
 ├── index.html
@@ -104,7 +105,7 @@ NexLock
 └── assets/
     └── bg.jpg
     └── logo.png
-
+```
 ---
 
 ## 💾 Storage Method
