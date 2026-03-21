@@ -314,7 +314,7 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 30% 20px;
 }
 
 .hero h1 {
@@ -1563,7 +1563,7 @@ hr {
   }
 
   .hero {
-    padding: 40px;
+    padding: 30% 40px;
   }
 
   .hero h1 {
@@ -1777,7 +1777,7 @@ hr {
   }
 
   .hero {
-    padding: 60px;
+    padding: 30% 60px;
   }
 
   .hero h1 {
@@ -2106,7 +2106,7 @@ hr {
 
   .hero {
     height: 90vh;
-    padding: 40px;
+    padding: 50% 40px;
   }
 
   .hero h1 {
